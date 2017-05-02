@@ -1,0 +1,6 @@
+general:
+  build_dir: tests
+test:
+  override:
+    - bash run_tests.sh | tee /tmp/test.log
+    - grep -v -E 'FAILED|ERROR' /tmp/test.log
