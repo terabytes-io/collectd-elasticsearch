@@ -660,6 +660,8 @@ def configure_callback(conf):
                 c.defaults.add(metric_name)
         elif node.key == "IndexStatsMasterOnly":
             c.master_only = str_to_bool(node.values[0])
+        elif node.key == "Dimensions":
+            c.extra_dimensions = node.values[0]
         else:
             log.warning('Unknown config key: %s.' % node.key)
 
@@ -756,6 +758,8 @@ class Cluster(object):
 
         self.es_current_master = False
         self.node_id = None
+
+        self.extra_dimensions = ''
 
     def sanatize_intervals(self):
         """Sanitizes the index interval to be greater or equal to and divisible by
@@ -1065,9 +1069,9 @@ class Cluster(object):
 
         # If dimensions are provided, format them and append
         # them to the plugin_instance
-        if dimensions:
-            val.plugin_instance += '[{dims}]'.format(dims=','.join(['='.join(d)
-                                                     for d in dimensions.items()]))
+        dim_str = self.get_dimension_string(dimensions)
+        if dim_str:
+            val.plugin_instance += '[{dims}]'.format(dims=dim_str)
 
         val.type = estype
         val.type_instance = name
@@ -1075,6 +1079,16 @@ class Cluster(object):
         val.meta = {'0': True}
         log.info('Emitting value: %s' % val)
         val.dispatch()
+
+    def get_dimension_string(self, dimensions):
+        dim_str = ''
+        if dimensions:
+            dim_str = ','.join(['='.join(d) for d in dimensions.items()])
+
+        if self.extra_dimensions:
+            dim_str += "%s%s" % (',' if dim_str else '', self.extra_dimensions)
+
+        return dim_str
 
 
 def sanitize_type_instance(index_name):
