@@ -34,4 +34,4 @@ jobs:
           working_directory: ~/code/tests/integration
           command: |
             chmod +x set_cluster_name wait_for_es
-            docker-compose run -T --rm test
+            bash ./run.sh

@@ -14,20 +14,20 @@ services:
       - es24
       - es53
 
-  es17: &es
-    image: elasticsearch:1.7.6
-    entrypoint: /bin/bash
-    command: '/set_cluster_name'
-    volumes:
-      - './set_cluster_name:/set_cluster_name'
+  es17:
+    build:
+      context: .
+      dockerfile: Dockerfile.es.1.7.6
 
   es24:
-    <<: *es
-    image: elasticsearch:2.4.5
+    build:
+      context: .
+      dockerfile: Dockerfile.es.2.4.5
 
   es53:
-    <<: *es
-    image: elasticsearch:5.3.2
+    build:
+      context: .
+      dockerfile: Dockerfile.es.5.3.2
 
   fake_sfx:
     build:
