@@ -1238,6 +1238,11 @@ log.propagate = False
 handle = CollectdLogHandler(PREFIX)
 log.addHandler(handle)
 
+def shutdown():
+    """Cleanup on plugin shutdown"""
+    log.info("elasticsearch plugin shutting down")
+    log.removeHandler(handle)
+
 
 def configure_test(cluster):
     """Configure the plugin for testing"""
@@ -1271,3 +1276,4 @@ if __name__ == '__main__':
 else:
     import collectd
     collectd.register_config(configure_callback)
+    collectd.register_shutdown(shutdown)
