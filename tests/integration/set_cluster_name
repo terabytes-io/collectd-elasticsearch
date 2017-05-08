@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if ! grep "^cluster.name" /usr/share/elasticsearch/config/elasticsearch.yml
+then
+  echo "cluster.name: es-${ELASTICSEARCH_VERSION}" >> /usr/share/elasticsearch/config/elasticsearch.yml
+fi
+
+exec /docker-entrypoint.sh elasticsearch

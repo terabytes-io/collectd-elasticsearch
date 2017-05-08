@@ -1,0 +1,46 @@
+---
+version: '2'
+services:
+  collectd:
+    build:
+      context: ../..
+      dockerfile: tests/integration/Dockerfile.collectd
+    environment:
+      SF_API_TOKEN: testing
+      SF_INGEST_HOST: fake_sfx
+    depends_on:
+      - fake_sfx
+      - es17
+      - es24
+      - es53
+
+  es17: &es
+    image: elasticsearch:1.7.6
+    entrypoint: /bin/bash
+    command: '/set_cluster_name'
+    volumes:
+      - './set_cluster_name:/set_cluster_name'
+
+  es24:
+    <<: *es
+    image: elasticsearch:2.4.5
+
+  es53:
+    <<: *es
+    image: elasticsearch:5.3.2
+
+  fake_sfx:
+    build:
+      context: .
+      dockerfile: Dockerfile.sink
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    depends_on:
+      - collectd
+
+
+networks:
+  default: {}
