@@ -993,10 +993,17 @@ class Cluster(object):
         node_info = json['nodes'].itervalues().next()
         version = node_info['version']
         # a node is master eligible by default unless it's configured otherwise
+	# use a different json key for aws hosted elasticsearch
         master_eligible = True
-        if 'node' in node_info['settings'] and \
-           'master' in node_info['settings']['node']:
-            master_eligible = node_info['settings']['node']['master'] == 'true'
+	if 'settings' in node_info:
+            if 'node' in node_info['settings'] and \
+            'master' in node_info['settings']['node']:
+                master_eligible = node_info['settings']['node']['master'] == 'true'
+        elif 'roles' in node_info:
+            if 'master' in node_info['roles']:
+                master_eligible = True
+        else:
+            master_eligible = False
 
         # update settings
         self.es_master_eligible = master_eligible
