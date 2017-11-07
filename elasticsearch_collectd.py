@@ -993,10 +993,14 @@ class Cluster(object):
         node_info = json['nodes'].itervalues().next()
         version = node_info['version']
         # a node is master eligible by default unless it's configured otherwise
+        # Note: settings is deprecated from json starting ES 5.5
         master_eligible = True
-        if 'node' in node_info['settings'] and \
-           'master' in node_info['settings']['node']:
-            master_eligible = node_info['settings']['node']['master'] == 'true'
+        try:
+            if 'node' in node_info['settings'] and \
+               'master' in node_info['settings']['node']:
+                master_eligible = node_info['settings']['node']['master'] == 'true'
+        except KeyError:
+            pass
 
         # update settings
         self.es_master_eligible = master_eligible
