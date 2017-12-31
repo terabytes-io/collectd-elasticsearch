@@ -318,20 +318,20 @@ NODE_STATS_ES_2 = {
 # ElasticSearch 1.3.0
 INDEX_STATS_ES_1_3 = {
     # SEGMENTS
-    "indices[index={index_name}].primaries.segments.index-writer-memory":
+    "indices.{index_name}.primaries.segments.index-writer-memory":
         Stat("gauge", "primaries.segments.index_writer_memory_in_bytes"),
-    "indices[index={index_name}].primaries.segments.version-map-memory":
+    "indices.{index_name}.primaries.segments.version-map-memory":
         Stat("gauge", "primaries.segments.version_map_memory_in_bytes"),
 }
 
 # ElasticSearch 1.1.0
 INDEX_STATS_ES_1_1 = {
     # SUGGEST
-    "indices[index={index_name}].primaries.suggest.total":
+    "indices.{index_name}.primaries.suggest.total":
         Stat("counter", "primaries.suggest.total"),
-    "indices[index={index_name}].primaries.suggest.time":
+    "indices.{index_name}.primaries.suggest.time":
         Stat("counter", "primaries.suggest.time_in_millis"),
-    "indices[index={index_name}].primaries.suggest.current":
+    "indices.{index_name}.primaries.suggest.current":
         Stat("gauge", "primaries.suggest.current"),
 }
 
@@ -339,225 +339,225 @@ INDEX_STATS_ES_1_1 = {
 INDEX_STATS = {
     # PRIMARIES
     # TRANSLOG
-    "indices[index={index_name}].primaries.translog.size":
+    "indices.{index_name}.primaries.translog.size":
         Stat("gauge", "primaries.translog.size_in_bytes"),
-    "indices[index={index_name}].primaries.translog.operations":
+    "indices.{index_name}.primaries.translog.operations":
         Stat("counter", "primaries.translog.operations"),
 
     # SEGMENTS
-    "indices[index={index_name}].primaries.segments.memory":
+    "indices.{index_name}.primaries.segments.memory":
         Stat("gauge", "primaries.segments.memory_in_bytes"),
-    "indices[index={index_name}].primaries.segments.count":
+    "indices.{index_name}.primaries.segments.count":
         Stat("counter", "primaries.segments.count"),
 
     # ID_CACHE
-    "indices[index={index_name}].primaries.id-cache.memory-size":
+    "indices.{index_name}.primaries.id-cache.memory-size":
         Stat("gauge", "primaries.id_cache.memory_size_in_bytes"),
 
     # FLUSH
-    "indices[index={index_name}].primaries.flush.total":
+    "indices.{index_name}.primaries.flush.total":
         Stat("counter", "primaries.flush.total"),
-    "indices[index={index_name}].primaries.flush.total-time":
+    "indices.{index_name}.primaries.flush.total-time":
         Stat("counter", "primaries.flush.total_time_in_millis"),
 
     # WARMER
-    "indices[index={index_name}].primaries.warmer.total.primaries.warmer"
+    "indices.{index_name}.primaries.warmer.total.primaries.warmer"
     ".total-time": Stat(
         "counter", "primaries.warmer.total_time_in_millis"),
-    "indices[index={index_name}].primaries.warmer.total":
+    "indices.{index_name}.primaries.warmer.total":
         Stat("counter", "primaries.warmer.total"),
-    "indices[index={index_name}].primaries.warmer.current":
+    "indices.{index_name}.primaries.warmer.current":
         Stat("gauge", "primaries.warmer.current"),
 
     # FIELDDATA
-    "indices[index={index_name}].primaries.fielddata.memory-size": Stat(
+    "indices.{index_name}.primaries.fielddata.memory-size": Stat(
         "gauge",
         "primaries.fielddata.memory_size_in_bytes"),
-    "indices[index={index_name}].primaries.fielddata.evictions": Stat(
+    "indices.{index_name}.primaries.fielddata.evictions": Stat(
         "counter",
         "primaries.fielddata.evictions"),
 
     # REFRESH
-    "indices[index={index_name}].primaries.refresh.total-time":
+    "indices.{index_name}.primaries.refresh.total-time":
         Stat("counter", "primaries.refresh.total_time_in_millis"),
-    "indices[index={index_name}].primaries.refresh.total":
+    "indices.{index_name}.primaries.refresh.total":
         Stat("counter", "primaries.refresh.total"),
 
     # MERGES
-    "indices[index={index_name}].primaries.merges.total-docs":
+    "indices.{index_name}.primaries.merges.total-docs":
         Stat("counter", "primaries.merges.total_docs"),
-    "indices[index={index_name}].primaries.merges.total-size":
+    "indices.{index_name}.primaries.merges.total-size":
         Stat("bytes", "primaries.merges.total_size_in_bytes"),
-    "indices[index={index_name}].primaries.merges.current":
+    "indices.{index_name}.primaries.merges.current":
         Stat("gauge", "primaries.merges.current"),
-    "indices[index={index_name}].primaries.merges.total":
+    "indices.{index_name}.primaries.merges.total":
         Stat("counter", "primaries.merges.total"),
-    "indices[index={index_name}].primaries.merges.current-docs":
+    "indices.{index_name}.primaries.merges.current-docs":
         Stat("gauge", "primaries.merges.current_docs"),
-    "indices[index={index_name}].primaries.merges.total-time":
+    "indices.{index_name}.primaries.merges.total-time":
         Stat("counter", "primaries.merges.total_time_in_millis"),
-    "indices[index={index_name}].primaries.merges.current-size":
+    "indices.{index_name}.primaries.merges.current-size":
         Stat("gauge", "primaries.merges.current_size_in_bytes"),
 
     # COMPLETION
-    "indices[index={index_name}].primaries.completion.size":
+    "indices.{index_name}.primaries.completion.size":
         Stat("gauge", "primaries.completion.size_in_bytes"),
 
     # PERCOLATE
-    "indices[index={index_name}].primaries.percolate.total":
+    "indices.{index_name}.primaries.percolate.total":
         Stat("counter", "primaries.percolate.total"),
-    "indices[index={index_name}].primaries.percolate.memory-size":
+    "indices.{index_name}.primaries.percolate.memory-size":
         Stat("gauge", "primaries.percolate.memory_size_in_bytes"),
-    "indices[index={index_name}].primaries.percolate.queries":
+    "indices.{index_name}.primaries.percolate.queries":
         Stat("counter", "primaries.percolate.queries"),
-    "indices[index={index_name}].primaries.percolate.time":
+    "indices.{index_name}.primaries.percolate.time":
         Stat("counter", "primaries.percolate.time_in_millis"),
-    "indices[index={index_name}].primaries.percolate.current":
+    "indices.{index_name}.primaries.percolate.current":
         Stat("gauge", "primaries.percolate.current"),
 
     # FILTER_CACHE
-    "indices[index={index_name}].primaries.filter-cache.evictions":
+    "indices.{index_name}.primaries.filter-cache.evictions":
         Stat("counter", "primaries.filter_cache.evictions"),
-    "indices[index={index_name}].primaries.filter-cache.memory-size":
+    "indices.{index_name}.primaries.filter-cache.memory-size":
         Stat("gauge", "primaries.filter_cache.memory_size_in_bytes"),
 
     # DOCS
-    "indices[index={index_name}].primaries.docs.count":
+    "indices.{index_name}.primaries.docs.count":
         Stat("gauge", "primaries.docs.count"),
-    "indices[index={index_name}].primaries.docs.deleted":
+    "indices.{index_name}.primaries.docs.deleted":
         Stat("gauge", "primaries.docs.deleted"),
 
     # STORE
-    "indices[index={index_name}].primaries.store.size":
+    "indices.{index_name}.primaries.store.size":
         Stat("gauge", "primaries.store.size_in_bytes"),
-    "indices[index={index_name}].primaries.store.throttle-time":
+    "indices.{index_name}.primaries.store.throttle-time":
         Stat("counter", "primaries.store.throttle_time_in_millis"),
 
     # INDEXING
-    "indices[index={index_name}].primaries.indexing.index-total":
+    "indices.{index_name}.primaries.indexing.index-total":
         Stat("counter", "primaries.indexing.index_total"),
-    "indices[index={index_name}].primaries.indexing.index-time":
+    "indices.{index_name}.primaries.indexing.index-time":
         Stat("counter", "primaries.indexing.index_time_in_millis"),
-    "indices[index={index_name}].primaries.indexing.index-current":
+    "indices.{index_name}.primaries.indexing.index-current":
         Stat("gauge", "primaries.indexing.index_current"),
-    "indices[index={index_name}].primaries.indexing.delete-total":
+    "indices.{index_name}.primaries.indexing.delete-total":
         Stat("counter", "primaries.indexing.delete_total"),
-    "indices[index={index_name}].primaries.indexing.delete-time":
+    "indices.{index_name}.primaries.indexing.delete-time":
         Stat("counter", "primaries.indexing.delete_time_in_millis"),
-    "indices[index={index_name}].primaries.indexing.delete-current":
+    "indices.{index_name}.primaries.indexing.delete-current":
         Stat("gauge", "primaries.indexing.delete_current"),
 
     # GET
-    "indices[index={index_name}].primaries.get.time":
+    "indices.{index_name}.primaries.get.time":
         Stat("counter", "primaries.get.time_in_millis"),
-    "indices[index={index_name}].primaries.get.exists-total":
+    "indices.{index_name}.primaries.get.exists-total":
         Stat("counter", "primaries.get.exists_total"),
-    "indices[index={index_name}].primaries.get.exists-time":
+    "indices.{index_name}.primaries.get.exists-time":
         Stat("counter", "primaries.get.exists_time_in_millis"),
-    "indices[index={index_name}].primaries.get.missing-total":
+    "indices.{index_name}.primaries.get.missing-total":
         Stat("counter", "primaries.get.missing_total"),
-    "indices[index={index_name}].primaries.get.missing-time":
+    "indices.{index_name}.primaries.get.missing-time":
         Stat("counter", "primaries.get.missing_time_in_millis"),
-    "indices[index={index_name}].primaries.get.current":
+    "indices.{index_name}.primaries.get.current":
         Stat("gauge", "primaries.get.current"),
 
     # SEARCH
-    "indices[index={index_name}].primaries.search.open-contexts":
+    "indices.{index_name}.primaries.search.open-contexts":
         Stat("gauge", "primaries.search.open_contexts"),
-    "indices[index={index_name}].primaries.search.query-total":
+    "indices.{index_name}.primaries.search.query-total":
         Stat("counter", "primaries.search.query_total"),
-    "indices[index={index_name}].primaries.search.query-time":
+    "indices.{index_name}.primaries.search.query-time":
         Stat("counter", "primaries.search.query_time_in_millis"),
-    "indices[index={index_name}].primaries.search.query-current":
+    "indices.{index_name}.primaries.search.query-current":
         Stat("gauge", "primaries.search.query_current"),
-    "indices[index={index_name}].primaries.search.fetch-total":
+    "indices.{index_name}.primaries.search.fetch-total":
         Stat("counter", "primaries.search.fetch_total"),
-    "indices[index={index_name}].primaries.search.fetch-time":
+    "indices.{index_name}.primaries.search.fetch-time":
         Stat("counter", "primaries.search.fetch_time_in_millis"),
-    "indices[index={index_name}].primaries.search.fetch-current":
+    "indices.{index_name}.primaries.search.fetch-current":
         Stat("gauge", "primaries.search.fetch_current"),
 
     # TOTAL #
     # DOCS
-    "indices[index={index_name}].total.docs.count":
+    "indices.{index_name}.total.docs.count":
         Stat("gauge", "total.docs.count"),
-    "indices[index={index_name}].total.docs.deleted":
+    "indices.{index_name}.total.docs.deleted":
         Stat("gauge", "total.docs.deleted"),
 
     # STORE
-    "indices[index={index_name}].total.store.size":
+    "indices.{index_name}.total.store.size":
         Stat("gauge", "total.store.size_in_bytes"),
-    "indices[index={index_name}].total.store.throttle-time":
+    "indices.{index_name}.total.store.throttle-time":
         Stat("counter", "total.store.throttle_time_in_millis"),
 
     # INDEXING
-    "indices[index={index_name}].total.indexing.index-total":
+    "indices.{index_name}.total.indexing.index-total":
         Stat("counter", "total.indexing.index_total"),
-    "indices[index={index_name}].total.indexing.index-time":
+    "indices.{index_name}.total.indexing.index-time":
         Stat("counter", "total.indexing.index_time_in_millis"),
-    "indices[index={index_name}].total.indexing.index-current":
+    "indices.{index_name}.total.indexing.index-current":
         Stat("gauge", "total.indexing.index_current"),
-    "indices[index={index_name}].total.indexing.delete-total":
+    "indices.{index_name}.total.indexing.delete-total":
         Stat("counter", "total.indexing.delete_total"),
-    "indices[index={index_name}].total.indexing.delete-time":
+    "indices.{index_name}.total.indexing.delete-time":
         Stat("counter", "total.indexing.delete_time_in_millis"),
-    "indices[index={index_name}].total.indexing.delete-current":
+    "indices.{index_name}.total.indexing.delete-current":
         Stat("gauge", "total.indexing.delete_current"),
 
     # GET
-    "indices[index={index_name}].total.get.total":
+    "indices.{index_name}.total.get.total":
         Stat("counter", "total.get.total"),
-    "indices[index={index_name}].total.get.time":
+    "indices.{index_name}.total.get.time":
         Stat("counter", "total.get.time_in_millis"),
-    "indices[index={index_name}].total.get.exists-total":
+    "indices.{index_name}.total.get.exists-total":
         Stat("counter", "total.get.exists_total"),
-    "indices[index={index_name}].total.get.exists-time":
+    "indices.{index_name}.total.get.exists-time":
         Stat("counter", "total.get.exists_time_in_millis"),
-    "indices[index={index_name}].total.get.missing-total":
+    "indices.{index_name}.total.get.missing-total":
         Stat("counter", "total.get.missing_total"),
-    "indices[index={index_name}].total.get.missing-time":
+    "indices.{index_name}.total.get.missing-time":
         Stat("counter", "total.get.missing_time_in_millis"),
-    "indices[index={index_name}].total.get.current":
+    "indices.{index_name}.total.get.current":
         Stat("gauge", "total.get.current"),
 
     # SEARCH
-    "indices[index={index_name}].total.search.open-contexts":
+    "indices.{index_name}.total.search.open-contexts":
         Stat("gauge", "total.search.open_contexts"),
-    "indices[index={index_name}].total.search.query-total":
+    "indices.{index_name}.total.search.query-total":
         Stat("counter", "total.search.query_total"),
-    "indices[index={index_name}].total.search.query-time":
+    "indices.{index_name}.total.search.query-time":
         Stat("counter", "total.search.query_time_in_millis"),
-    "indices[index={index_name}].total.search.query-current":
+    "indices.{index_name}.total.search.query-current":
         Stat("gauge", "total.search.query_current"),
-    "indices[index={index_name}].total.search.fetch-total":
+    "indices.{index_name}.total.search.fetch-total":
         Stat("counter", "total.search.fetch_total"),
 
     # MERGES
-    "indices[index={index_name}].total.merges.total-docs":
+    "indices.{index_name}.total.merges.total-docs":
         Stat("counter", "total.merges.total_docs"),
-    "indices[index={index_name}].total.merges.total-size":
+    "indices.{index_name}.total.merges.total-size":
         Stat("bytes", "total.merges.total_size_in_bytes"),
-    "indices[index={index_name}].total.merges.current":
+    "indices.{index_name}.total.merges.current":
         Stat("gauge", "total.merges.current"),
-    "indices[index={index_name}].total.merges.total":
+    "indices.{index_name}.total.merges.total":
         Stat("counter", "total.merges.total"),
-    "indices[index={index_name}].total.merges.current-docs":
+    "indices.{index_name}.total.merges.current-docs":
         Stat("gauge", "total.merges.current_docs"),
-    "indices[index={index_name}].total.merges.total-time":
+    "indices.{index_name}.total.merges.total-time":
         Stat("counter", "total.merges.total_time_in_millis"),
-    "indices[index={index_name}].total.merges.current-size":
+    "indices.{index_name}.total.merges.current-size":
         Stat("gauge", "total.merges.current_size_in_bytes"),
 
     # FILTER_CACHE
-    "indices[index={index_name}].total.filter-cache.evictions":
+    "indices.{index_name}.total.filter-cache.evictions":
         Stat("counter", "total.filter_cache.evictions"),
-    "indices[index={index_name}].total.filter-cache.memory-size":
+    "indices.{index_name}.total.filter-cache.memory-size":
         Stat("gauge", "total.filter_cache.memory_size_in_bytes"),
 
     # FIELDDATA
-    "indices[index={index_name}].total.fielddata.memory-size":
+    "indices.{index_name}.total.fielddata.memory-size":
         Stat("gauge", "total.fielddata.memory_size_in_bytes"),
-    "indices[index={index_name}].total.fielddata.evictions":
+    "indices.{index_name}.total.fielddata.evictions":
         Stat("counter", "total.fielddata.evictions"),
 
 }
@@ -969,7 +969,7 @@ class Cluster(object):
                 response.close()
 
     def load_es_info(self):
-        json = self.fetch_url(self.es_url_scheme + "://" + self.es_host + ":" +
+        json = self.fetch_url(self.es_url_scheme + "://" + self.es_host + ":" + 
                               str(self.es_port) + "/_nodes/_local")
         if json is None:
             # assume some sane defaults
@@ -1016,8 +1016,8 @@ class Cluster(object):
         """Determines if this is the current master. This method sets
         self.es_current_master"""
         # determine current master
-        cluster_state = self.fetch_url(self.es_url_scheme + "://" +
-                                       self.es_host + ":" + str(self.es_port) +
+        cluster_state = self.fetch_url(self.es_url_scheme + "://" + 
+                                       self.es_host + ":" + str(self.es_port) + 
                                        "/_cluster/state/master_node")
         if self.es_current_master is False \
            and cluster_state['master_node'] == self.node_id:
@@ -1072,7 +1072,7 @@ class Cluster(object):
         for name, key in self.index_stats_cur.iteritems():
             # filter default metrics
             if self.detailed_metrics is True or \
-               name.replace("[index={index_name}]", "") in self.defaults:
+               name.replace(".{index_name}", "") in self.defaults:
                 result = dig_it_up(json, key.path)
                 # update the index name in the type_instance to include
                 # the index as a dimensions
